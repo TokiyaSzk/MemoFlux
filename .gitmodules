@@ -1,0 +1,6 @@
+[submodule "MemoFluxServer"]
+	path = MemoFluxServer
+	url = git@github.com:TokiyaSzk/MemoFluxServer.git
+[submodule "MemoFluxIOS"]
+	path = MemoFluxIOS
+	url = git@github.com:TokiyaSzk/MemoFluxIOS.git
