@@ -11,9 +11,13 @@ git submodule update --init --recursive
 *主仓库并不会自动更新子模块的提交，更新引用可以执行额外命令*
 
 ```
-git add server # 告诉主仓库 Server 子模块的引用发生了变化
-git add client
-git commit -m "Update server submodule to latest version"
+cd MemoFluxServer
+git pull origin main
+cd ..
+cd MemoFluxIOS
+git pull origin main
+git add . 
+git commit -m "Update server & client submodule to latest version"
 git push
 ```
 
