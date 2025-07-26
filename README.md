@@ -68,5 +68,15 @@ MemoFlux 提供了一套从采集到行动的完整闭环解决方案。用户�
 | **[FastAPI](https://fastapi.tiangolo.com/)** | 一个现代化、高性能的 Python Web 框架，用于构建 API。它以其出色的性能、易用性以及基于类型提示的自动 API 文档生成而闻名。 | **项目的后端服务骨架**。<br>- 构建所有面向客户端 (iOS/Web) 的 RESTful API 接口，如用户认证、笔记的增删改查、知识图谱数据获取等。<br>- 其原生的异步支持与 `asyncio` 完美结合，是承载高并发 AI 和数据库请求的理想选择。 |
 | **[asyncio](https://docs.python.org/3/library/asyncio.html)** | Python 内置的、用于通过 `async/await` 语法编写并发代码的标准库。它使得在单线程中处理大量 I/O 密集型任务成为可能。 | **高并发处理的基石**。<br>- 允许应用在等待 LLM API 响应或数据库查询返回时，不阻塞整个线程，而去处理其他用户的请求。<br>- 确保了 MemoFlux 在与多个外部服务（Qdrant、LLM API、主数据库）交互时，依然能保持低延迟和高吞吐量。 |
 
+## MemoFlux - 前端技术栈 (Frontend Tech Stack)
 
+以下是 MemoFlux 项目的核心前端技术栈，旨在构建一个现代化、响应迅速、AI 驱动的 iOS 客户端。
+
+| 技术组件 (Component) | 核心描述 (Core Description) | 在 MemoFlux 项目中的作用 (Role in the MemoFlux Project) |
+| :--- | :--- | :--- |
+| **[SwiftUI](https://developer.apple.com/swiftui/)** | Apple 推出的现代化 UI 框架，强调声明式编程风格，具备强大的跨平台（iOS、iPadOS、macOS）支持与高度响应式特性。 | **主界面构建与交互基础**。<br>- 用于构建用户界面，包括主视图、Memo展示、标签管理、每日总结等模块。<br>- 结合状态驱动编程模型，实现笔记Memo实时更新、搜索联想等动态交互体验。 |
+| **[UIKit](https://developer.apple.com/documentation/uikit)** | Apple 传统 UI 框架，提供了对低层级 UI 控件、动画和复杂交互的精细控制。 | **增强交互与兼容性补充层**。<br>- 用于处理 SwiftUI 难以覆盖的 UI 细节，如页面滑动手势、键盘工具栏等。<br>- 利用 `UIViewControllerRepresentable` 与 SwiftUI 混合使用，提升整体交互表现力。 |
+| **[SwiftData](https://developer.apple.com/xcode/swiftdata/)** | Apple 在 WWDC23 推出的原生数据持久化框架，结合 SwiftUI，支持声明式模型定义与自动存储。 | **本地数据的轻量存储解决方案**。<br>- 实现离线Memo缓存、标签本地化存储等功能。<br>- 提供与界面高度集成的持久化方案，保障即使断网时也可顺畅使用。 |
+| **[EventKit](https://developer.apple.com/documentation/eventkit/)** | Apple 提供的用于访问和编辑用户日历与提醒事项的原生框架。 | **日程同步与事件提醒的接口**。<br>- 将结构化Memo中的日程信息（如会议、行程等）同步至系统日历或提醒事项。<br>- 实现自动添加提醒、检查时间冲突等功能，实现 AI 驱动的信息 → 行动闭环。 |
+| **[VisionKit](https://developer.apple.com/documentation/visionkit/)** | Apple 提供的文档扫描与图像识别框架，支持快速提取图像中的文本信息。 | **信息采集的入口组件**。<br>- 支持用户通过相机或相册扫描截图、海报、纸质文档等，提取关键信息。<br>- 搭配 LLM 实现对截图内容的意图理解与结构化处理（如添加日程、记录灵感等）。 |
 
